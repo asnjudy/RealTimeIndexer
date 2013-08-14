@@ -1,0 +1,21 @@
+路径名不要含有中文字符
+
+使用方法：
+java rti.core.RealTimeIndex -index INDEX_PATH [-interval MERGE_INTERVAL (s)] [-indexport INDEX_PORT][-searchport SEARCH_PORT] [-update]
+或者：
+java rti.core.RealTimeIndex -ind INDEX_PATH [-int MERGE_INTERVAL (s)] [-ip INDEX_PORT][-sp SEARCH_PORT] [-u]
+
+参数说明：
+1. -index/-ind : 索引文件的存储路径，该参数为必须参数
+2. -interval/-int : 将内存中的索引合并到硬盘上的时间周期，单位秒，默认 1800
+3. -indexport/-ip : 索引请求监听端口，默认 9081
+4. -searchport/-sp : 搜索请求监听端口，默认 9091
+5. -update/-u : 在现有索引基础上更新，如果没有该选项则删除索引路径下的所有索引，然后重新创建
+
+附加参数：
+6. -tpoolsize/-tps : 搜索请求线程池大小，默认 100
+
+示例：
+java -jar RealTimeIndex.jar -ind E:\test\index -int 60
+
+java -jar RealTimeIndex.jar -ind E:\test\index -int 300 -u
